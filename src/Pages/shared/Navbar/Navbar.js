@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Nav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,83 +8,105 @@ export const Nav = () => {
         <div class="bg-gray-900">
             <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div class="relative flex items-center justify-between">
-                    <a
-                        href="/"
-                        aria-label="Company"
-                        title="Company"
-                        class="inline-flex items-center"
-                    >
-                        <svg
-                            class="w-8 text-teal-accent-400"
-                            viewBox="0 0 24 24"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeMiterlimit="10"
-                            stroke="currentColor"
-                            fill="none"
+                    <div class="flex items-center">
+                        <Link
+                            to="/"
+                            aria-label="Task-Goal"
+                            title="Task Goal"
+                            class="inline-flex items-center mr-8"
                         >
-                            <rect x="3" y="1" width="7" height="12" />
-                            <rect x="3" y="17" width="7" height="6" />
-                            <rect x="14" y="1" width="7" height="6" />
-                            <rect x="14" y="11" width="7" height="12" />
-                        </svg>
-                        <span class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
-                            Company
-                        </span>
-                    </a>
+                            <svg
+                                class="w-8 text-teal-400"
+                                viewBox="0 0 24 24"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeMiterlimit="10"
+                                stroke="currentColor"
+                                fill="none"
+                            >
+                                <rect x="3" y="1" width="7" height="12" />
+                                <rect x="3" y="17" width="7" height="6" />
+                                <rect x="14" y="1" width="7" height="6" />
+                                <rect x="14" y="11" width="7" height="12" />
+                            </svg>
+                            <span class="ml-2 text-xl font-bold tracking-wide text-gray-100 uppercase">
+                                Task Goal
+                            </span>
+                        </Link>
+                        <ul class="flex items-center hidden space-x-8 lg:flex">
+                            <li>
+                                <Link
+                                    to="/"
+                                    aria-label="Home"
+                                    title="Home"
+                                    class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                >
+                                    Home
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/add-task"
+                                    aria-label="add-task"
+                                    title="Add Task"
+                                    class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                >
+                                    Add Task
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/my-task"
+                                    aria-label="my-task"
+                                    title="My Task"
+                                    class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                >
+                                    My task
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/completed-tasks"
+                                    aria-label="completed-tasks"
+                                    title="Completed Tasks"
+                                    class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                >
+                                    Completed Tasks
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    to="/"
+                                    aria-label="About us"
+                                    title="About us"
+                                    class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                >
+                                    About us
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
                     <ul class="flex items-center hidden space-x-8 lg:flex">
                         <li>
-                            <a
-                                href="/"
-                                aria-label="Our product"
-                                title="Our product"
+                            <Link
+                                to="/sign-in"
+                                aria-label="Sign in"
+                                title="Sign in"
                                 class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
                             >
-                                Product
-                            </a>
+                                Sign in
+                            </Link>
                         </li>
                         <li>
-                            <a
-                                href="/"
-                                aria-label="Our product"
-                                title="Our product"
-                                class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                            >
-                                Features
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/"
-                                aria-label="Product pricing"
-                                title="Product pricing"
-                                class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                            >
-                                Pricing
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="/"
-                                aria-label="About us"
-                                title="About us"
-                                class="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                            >
-                                About us
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="flex items-center hidden space-x-8 lg:flex">
-                        <li>
-                            <a
-                                href="/"
-                                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                            <Link
+                                to="/sign-up"
+                                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                                 aria-label="Sign up"
                                 title="Sign up"
                             >
                                 Sign up
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                     <div class="lg:hidden">
@@ -113,14 +136,14 @@ export const Nav = () => {
                                 <div class="p-5 bg-white border rounded shadow-sm">
                                     <div class="flex items-center justify-between mb-4">
                                         <div>
-                                            <a
-                                                href="/"
-                                                aria-label="Company"
-                                                title="Company"
+                                            <Link
+                                                to="/"
+                                                aria-label="Task-Goal"
+                                                title="Task Goal"
                                                 class="inline-flex items-center"
                                             >
                                                 <svg
-                                                    class="w-8 text-deep-purple-accent-400"
+                                                    class="w-8 text-purple-400"
                                                     viewBox="0 0 24 24"
                                                     strokeLinejoin="round"
                                                     strokeWidth="2"
@@ -135,9 +158,9 @@ export const Nav = () => {
                                                     <rect x="14" y="11" width="7" height="12" />
                                                 </svg>
                                                 <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-                                                    Company
+                                                    Task Goal
                                                 </span>
-                                            </a>
+                                            </Link>
                                         </div>
                                         <div>
                                             <button
@@ -158,54 +181,74 @@ export const Nav = () => {
                                     <nav>
                                         <ul class="space-y-4">
                                             <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="Our product"
-                                                    title="Our product"
+                                                <Link
+                                                    to="/"
+                                                    aria-label="home"
+                                                    title="Home"
                                                     class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                    Product
-                                                </a>
+                                                    Home
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="Our product"
-                                                    title="Our product"
+                                                <Link
+                                                    to="/add-task"
+                                                    aria-label="add-task"
+                                                    title="Add Task"
                                                     class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                    Features
-                                                </a>
+                                                    Add Task
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a
-                                                    href="/"
-                                                    aria-label="Product pricing"
-                                                    title="Product pricing"
+                                                <Link
+                                                    to="/my-task"
+                                                    aria-label="my-task"
+                                                    title="My Task"
                                                     class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
-                                                    Pricing
-                                                </a>
+                                                    My Task
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a
-                                                    href="/"
+                                                <Link
+                                                    to="/completed-task"
+                                                    aria-label="Completed-Tasks"
+                                                    title="Completed Tasks"
+                                                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                >
+                                                    Completed Tasks
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link
+                                                    to="/about-us"
                                                     aria-label="About us"
                                                     title="About us"
                                                     class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                     About us
-                                                </a>
+                                                </Link>
                                             </li>
                                             <li>
-                                                <a
-                                                    href="/"
-                                                    class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none"
+                                                <Link
+                                                    to="/sign-in"
+                                                    aria-label="Sign in"
+                                                    title="Sign in"
+                                                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                >
+                                                    Sign in
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link
+                                                    to="/sign-up"
+                                                    class="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
                                                     aria-label="Sign up"
                                                     title="Sign up"
                                                 >
                                                     Sign up
-                                                </a>
+                                                </Link>
                                             </li>
                                         </ul>
                                     </nav>
