@@ -26,11 +26,6 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, userInfo)
     }
 
-    // const deletingUserAccount = () => {
-    //     setloading(true)
-    //     return deleteUser()
-    // }
-
     const signIn = (email, password) => {
         setloading(true)
         return signInWithEmailAndPassword(auth, email, password)

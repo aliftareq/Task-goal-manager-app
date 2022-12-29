@@ -1,8 +1,28 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../../Contexts/AuthProvider";
 
 export const Nav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    //context values
+    const { user, logOut } = useContext(AuthContext)
+
+    //navigation
+    const navigate = useNavigate()
+    //handlers 
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.info('successfully logged out')
+                navigate('/sign-in')
+            })
+            .catch(err => {
+                console.error(err)
+                toast.error('something went wrong')
+            })
+    }
 
     return (
         <div className="bg-gray-900">
@@ -67,7 +87,7 @@ export const Nav = () => {
                             </li>
                             <li>
                                 <Link
-                                    to="/completed-tasks"
+                                    to="/completed-task"
                                     aria-label="completed-tasks"
                                     title="Completed Tasks"
                                     className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
@@ -75,39 +95,47 @@ export const Nav = () => {
                                     Completed Tasks
                                 </Link>
                             </li>
-                            <li>
-                                <Link
-                                    to="/"
-                                    aria-label="About us"
-                                    title="About us"
-                                    className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                                >
-                                    About us
-                                </Link>
-                            </li>
                         </ul>
                     </div>
                     <ul className="flex items-center hidden space-x-8 lg:flex">
-                        <li>
-                            <Link
-                                to="/sign-in"
-                                aria-label="Sign in"
-                                title="Sign in"
-                                className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
-                            >
-                                Sign in
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/sign-up"
-                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
-                                aria-label="Sign up"
-                                title="Sign up"
-                            >
-                                Sign up
-                            </Link>
-                        </li>
+                        {
+                            user && user?.uid
+                                ?
+                                <>
+                                    <div className="w-10 rounded-full">
+                                        <img className='rounded-2xl' title={user?.displayName} src={user?.photoURL} alt='img-1' />
+                                    </div>
+                                </>
+                                :
+                                <li>
+                                    <Link
+                                        to="/sign-in"
+                                        aria-label="Sign in"
+                                        title="Sign in"
+                                        className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-teal-accent-400"
+                                    >
+                                        Sign in
+                                    </Link>
+                                </li>
+                        }
+                        {
+                            user && user?.uid
+                                ?
+                                <li onClick={handleLogOut}>
+                                    <p className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none">Logout</p>
+
+                                </li>
+                                :
+                                <Link
+                                    to="/sign-up"
+                                    className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-purple-400 hover:bg-purple-700 focus:shadow-outline focus:outline-none"
+                                    aria-label="Sign up"
+                                    title="Sign up"
+                                >
+                                    Sign up
+                                </Link>
+
+                        }
                     </ul>
                     <div className="lg:hidden">
                         <button
@@ -218,16 +246,6 @@ export const Nav = () => {
                                                     className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
                                                 >
                                                     Completed Tasks
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    to="/about-us"
-                                                    aria-label="About us"
-                                                    title="About us"
-                                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                >
-                                                    About us
                                                 </Link>
                                             </li>
                                             <li>
